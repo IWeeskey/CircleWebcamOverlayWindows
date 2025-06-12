@@ -4,7 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
-namespace iMonoB.WebcamOverlay
+namespace IWDev.WebcamOverlay
 {
     public class WindowsTransparentWindow : MonoBehaviour
     {
@@ -16,21 +16,15 @@ namespace iMonoB.WebcamOverlay
         private const uint WS_EX_LAYERED = 0x00080000;
         private const uint WS_EX_TRANSPARENT = 0x00000020;
         private const uint LWA_COLORKEY = 0x00000001;
-        private const uint WS_EX_TOPMOST = 0x00000008;
         private const int WM_SYSCOMMAND = 0x0112;
         private const int SC_MOVE = 0xF010;
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
         private const int HTCAPTION = 0x2;
         private static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
-
         private const uint SWP_NOSIZE = 0x0001;
         private const uint SWP_NOMOVE = 0x0002;
         private const uint SWP_NOACTIVATE = 0x0010;
         private const uint SWP_SHOWWINDOW = 0x0040;
-
         private const uint TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW;
-
 
         [DllImport("user32.dll")] static extern IntPtr GetActiveWindow();
         [DllImport("user32.dll")] static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
