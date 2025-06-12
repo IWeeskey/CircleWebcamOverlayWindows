@@ -10,8 +10,9 @@ namespace IWDev.WebcamOverlay
     {
         [SerializeField] private Transform _scalerParent;
         [SerializeField] private TMP_Dropdown _dropDownTMPro;
+        [SerializeField] private Transform _flipTarget;
         private float _scaleStep = 0.1f;
-        
+      
         
         public void SwitchEnable()
         {
@@ -57,15 +58,25 @@ namespace IWDev.WebcamOverlay
                 optionsList.Add(newEntry);
             }
             _dropDownTMPro.AddOptions(optionsList);
-
-
-
         }
 
         public void OnDropDownChanged()
         {
             CamerasManager.Instance.TrySwitchToCamera(_dropDownTMPro.value);
         }
-        
+
+        public void FlipHorizontal()
+        {
+            Vector3 scale = _flipTarget.localScale;
+            scale.x *= -1f;
+            _flipTarget.localScale = scale;
+        }
+
+        public void FlipVertical()
+        {
+            Vector3 scale = _flipTarget.localScale;
+            scale.y *= -1f;
+            _flipTarget.localScale = scale;
+        }
     }
 }
